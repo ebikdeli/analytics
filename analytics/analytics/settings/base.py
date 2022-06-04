@@ -21,6 +21,7 @@ INSTALLED_APPS = [
     'django_hosts',
 
     'apps.accounts',
+    'apps.analysis',
 ]
 
 MIDDLEWARE = [
