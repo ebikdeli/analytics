@@ -8,6 +8,7 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('ckeditor/', include('ckeditor_uploader.urls')),
     path('accounts/', include('apps.accounts.urls')),   # Defined as subdomain so better to be cited as subdomain
     # path('api-auth/', include('rest_framework.urls')),
     # path('token-auth/', token_view.obtain_auth_token),

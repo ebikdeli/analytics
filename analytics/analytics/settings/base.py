@@ -13,15 +13,18 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework.authtoken',
     'django_filters',
-    # 'taggit',
-    # 'django_quill',
-    # 'django_countries',
+    'taggit',
+    'django_quill',
+    'django_countries',
     # 'social_django',
     'corsheaders',
     'django_hosts',
+    'ckeditor',
+    'ckeditor_uploader',
 
     'apps.accounts',
     'apps.analysis',
+    'apps.shop',
 ]
 
 MIDDLEWARE = [
@@ -51,7 +54,8 @@ DEFAULT_HOST = 'www'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR,],
+        'DIRS': [BASE_DIR,
+                os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -203,3 +207,20 @@ REST_FRAMEWORK = {
 # Cors headers settings
 CORS_ALLOWED_ORIGINS = []
 CORS_ALLOW_ALL_ORIGINS = True
+
+# CKEditor settings
+# CKEDITOR_BASEPATH = "/static/ckeditor/ckeditor/"
+CKEDITOR_BASEPATH = f"{STATIC_URL}ckeditor/ckeditor/"
+# CKEDITOR_BASEPATH = (os.path.join(STATIC_URL, 'ckeditor', 'ckeditor', '')).replace("\\", "/")
+
+CKEDITOR_UPLOAD_PATH = "uploads/"
+
+# CKEditor optional settings
+CKEDITOR_CONFIGS = {
+    'default': {
+        'toolbar': 'full',
+        # 'toolbar': 'basic',
+        # 'height': 300,
+        # 'width': 300,
+    },
+}
