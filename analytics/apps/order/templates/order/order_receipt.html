@@ -1,0 +1,22 @@
+{% extends 'templates/base.html' %}
+{% load custom_filters %}
+
+{% block title %}رسید مشتری{% endblock %}
+
+{% block content %}
+    <h2>با تشکر از خرید شما. لیست سفارشات شما:</h2>
+    {% for product in order.products.all %}
+        <h3>{{ forloop.counter }}-</h3>
+    {% for product_id, numbers in order.items.items %}
+        {% if product_id == product.product_id %}
+            <p>{{ numbers }} عدد {{ product }}</p>
+
+            <p>قیمت محصول: {{ product.price|multiple:numbers }}</p>
+            <p>مبلغ پرداخت شده برای محصول: {{ product.end_price|multiple:numbers }}</p>
+         {% endif %}
+    {% endfor %}
+    {% endfor %}
+    <p>تعداد کل آیتم ها: {{ order.total_items }}</p>
+        <p>قیمت کل (قبل از تخفیف): {{ order.price }}</p>
+        <p>مبلغ پرداخت شده: {{ order.total_price }}</p>
+{% endblock content %}
